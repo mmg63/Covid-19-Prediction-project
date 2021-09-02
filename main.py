@@ -12,9 +12,13 @@ import torch.nn as nn
 import torchvision
 import csv
 
-filepath = 'Covid-19_dataset/countermeasures_db_johnshopkins_2020_03_30.csv'
-with open(filepath) as csv_file:
-    csv_reader = csv.reader(csv_file, dialect=',')
+# filepath = 'Covid-19_dataset/countermeasures_db_johnshopkins_2020_03_30.csv'
+filepath = 'Covid-19_dataset/COVID 19 Containment measures data.csv'
+with open(filepath, mode='r') as csv_file:
+    csv_dictionary = csv.DictReader(csv_file)
+    print('fields\' name:')
+    print(csv_dictionary.fieldnames)
+    csv_reader = csv.reader(csv_file)
     line_count = 0
     for row in csv_reader:
         print(f'Column names are {", ".join(row)}')
